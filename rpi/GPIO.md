@@ -5,7 +5,7 @@
 ### Overview
 **GPIO Zero** is a Python API used to programme the RPi . It is easy to use and very *friendly* for beginners to start with . It's code is simpler to read & as short as possible .   
 The GPIO Zero library takes the class method approach to control, as opposed to the function method approach of **RPi.GPIO** and other, similar libraries . Pins become Python objects, which must be set up before use.
-[comment]: # (add Rpi.GPIO .md file link.)
+
 
 ### Importing GPIO Zero
 There are various inbuilt function in GPIOZero(library) like LED, Button, PWMLED etc..
@@ -17,9 +17,7 @@ we can use these functions in either of the following format:
  2.    import whole GPIO Zero library.But here all references to items within GPIO Zero must be prefixed:
  * `led = _gpiozero.LED()_`
 
- *   from _gpiozero_ import _Button_  and Button can be used directly.  **or**
- 2.    import whole GPIO Zero library.But here all references to items within GPIO Zero must be prefixed:
- *    led = _gpiozero.LED()_
+
 
 
 ### PIN NUMBERING OF RASPBERRY PI
@@ -35,10 +33,6 @@ PIN numbering can be done in various ways. some of them are as follows:
 __Note:__ the numbering of the GPIO pins is not in numerical order; GPIO pins 0 and 1 are present on the board (physical pins 27 and 28) but are reserved for advanced use (see below).Any pin marked “GPIO” in the diagram below can be used as a pin number. For example, if an LED was attached to “GPIO17” you would specify the pin number as 17 rather than 11
 
 ### Voltage
-Note: the numbering of the GPIO pins is not in numerical order; GPIO pins 0 and 1 are present on the board (physical pins 27 and 28) but are reserved for advanced use (see below).Any pin marked “GPIO” in the diagram below can be used as a pin number. For example, if an LED was attached to “GPIO17” you would specify the pin number as 17 rather than 11
-
-### voltage
-
 1. 5V pin : pin(BOARD) 2 & 4
 2. 3V3 pin : pin(BOARD) 1 & 17
 3. GROUND pin : pin(BOARD) 6 ,9, 14, 20, 25, 30, 34, 39
@@ -87,6 +81,6 @@ This is similar to blinking with brightness fading in and out .
 
 ### BUTTON
 
-# DIfferent function in _GPIO ZERO_ LIBRARY:
 
-### LED
+
+
