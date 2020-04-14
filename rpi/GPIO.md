@@ -41,91 +41,9 @@ __Note:__ the numbering of the GPIO pins is not in numerical order; GPIO pins 0 
 ### Outputs
 A GPIO pin designated as an output pin can be set to high (3V3) or low (0V).
 
-## Different function in __GPIO ZERO__ LIBRARY:
+## Different function in __GPIO ZERO__ LIBRARY:  
 
-
-### LED
-This library uses __BCM__ method of numbering as default. So there is no need to tell which to use. Also any output pin is called **`LED`** .This is because it is defined as LED class . <br />
-```
-gpiozero.LED(pin)  or  LED(pin)
-``` 
-Here are some function for LED:   
-**let led = LED(pin)**   
-* `led.blink(on_time = 1, off_time = 1,n=None)`  (values given are default)   
-        it's parameter are:  
-        on_time(float) : number of seconds on   
-        off_time(float) : number of seconds off  
-* `led.off()`  
-        turn the device off.
-* `led.on()`  
-        turm the device on.
-* `led.toogle()`  
-        Reverse the state of the device. If it’s on, turn it off; if it’s off, turn it on.
-* `led.islit`  
-        if active returns **True**  
-        otherwise **False**
-* `led.pin`  
-         The pin through which device is connected.
-* `led.value`  
-         if active returns **1**  
-         otherwise **0**
-
-Here is a code to understand better:
-
-```python
-'''this is a simple code for blinking of led with the help of  gpiozero library'''
-
-from gpiozero import LED   #this imports the LED class from the gpio lirary.
-from time import sleep 
-
-led = LED(18)       # 'led' is variable name can be anything and this becomes the object.
-
-while True:
-    led.on()       # this calls the on() function of LED class for object led.
-    sleep(1)
-    led.off()      # this calls the off() function.
-    sleep(1) 
-    
-``` 
-#### PWMLED
-
-As known PWM is technique for getting analog results from digital means . So this class can be used for variable output .  
-```
-gpiozero.PWMLED(pin)  or PWMLED(pin)
-```
-Here are some functions :  
-**let led = PWMLED(pin)** 
-* **`(on,off,pin,is_lit)`** works same as **LED** function.  
-* ` led.blink(on_time=1, off_time=1, fade_in_time=0, fade_out_time=0, n=None)`  (values given are default)  
-        `It's parameter:`  
-        **on_time, off_time, n**  are same as in LED  
-        fade_in_time (float) – Number of seconds to spend fading in. Defaults to 0.  
-        fade_out_time (float) – Number of seconds to spend fading out. Defaults to 0.  
-        
-* ` led.value = val `    
-        Through this brightness of the led can be set .  It should be noted the value must lie between '0' & '1' .  
-
-* ` led.pulse(fade_in_time=1, fade_out_time=1, n=None)`   
-        This is similar to blinking with brightness fading in and out .
-
-Here is a code to understand better:
-
-```python
-'''this is a simple code for blinking of led with the help of  gpiozero library'''
-
-from gpiozero import PWMLED   #this imports the LED class from the gpio lirary.
-from time import sleep 
-
-led = PWMLED(18)       # 'led' is variable name can be anything and this becomes the object.
-
-while True:
-    led.on()       # this calls the on() function of LED class for object led.
-    sleep(1)
-    led.off()      # this calls the off() function.
-    sleep(1) 
-    
-```   
-
+## _INPUT DEVICES_ ##
 
 
 ### BUTTON  
@@ -175,5 +93,126 @@ while True:
          print("button is not pressed")
     
 ```   
+
+
+## _OUTPUT DEVICES_ ##  
+
+### LED
+This library uses __BCM__ method of numbering as default. So there is no need to tell which to use. Also any output pin is called **`LED`** .This is because it is defined as LED class . <br />
+```
+gpiozero.LED(pin)  or  LED(pin)
+``` 
+Here are some function for LED:   
+**let led = LED(pin)**   
+* `led.blink(on_time = 1, off_time = 1,n=None)`  (values given are default)   
+   * it's parameter are:  
+     * on_time(float) : number of seconds on   
+     * off_time(float) : number of seconds off  
+* `led.off()`  
+        turn the device off.
+* `led.on()`  
+        turm the device on.
+* `led.toogle()`  
+        Reverse the state of the device. If it’s on, turn it off; if it’s off, turn it on.
+* `led.islit`  
+        if active returns **True**  
+        otherwise **False**
+* `led.pin`  
+         The pin through which device is connected.
+* `led.value`  
+         if active returns **1**  
+         otherwise **0**
+
+Here is a code to understand better:
+
+```python
+'''this is a simple code for blinking of led with the help of  gpiozero library'''
+
+from gpiozero import LED   #this imports the LED class from the gpio lirary.
+from time import sleep 
+
+led = LED(18)       # 'led' is variable name can be anything and this becomes the object.
+
+while True:
+    led.on()       # this calls the on() function of LED class for object led.
+    sleep(1)
+    led.off()      # this calls the off() function.
+    sleep(1) 
+    
+``` 
+### PWMLED
+
+As known PWM is technique for getting analog results from digital means . So this class can be used for variable output .  
+```
+gpiozero.PWMLED(pin)  or PWMLED(pin)
+```
+Here are some functions :  
+**let led = PWMLED(pin)** 
+* **`(on,off,pin,is_lit)`** works same as **LED** function.  
+* ` led.blink(on_time=1, off_time=1, fade_in_time=0, fade_out_time=0, n=None)`  (values given are default)  
+  * `It's parameter:`  
+    * **on_time, off_time, n**  are same as in LED  
+    * fade_in_time (float) – Number of seconds to spend fading in. Defaults to 0.  
+    * fade_out_time (float) – Number of seconds to spend fading out. Defaults to 0.  
+        
+* ` led.value = val `    
+        Through this brightness of the led can be set .  It should be noted the value must lie between '0' & '1' .  
+
+* ` led.pulse(fade_in_time=1, fade_out_time=1, n=None)`   
+        This is similar to blinking with brightness fading in and out .
+
+Here is a code to understand better:
+
+```python
+'''this is a simple code for blinking of led with the help of  gpiozero library'''
+
+from gpiozero import PWMLED   #this imports the LED class from the gpio lirary.
+from time import sleep 
+
+led = PWMLED(18)       # 'led' is variable name can be anything and this becomes the object.
+
+while True:
+    led.on()       # this calls the on() function of LED class for object led.
+    sleep(1)
+    led.off()      # this calls the off() function.
+    sleep(1) 
+    
+``` 
+### RGBLED
+It represent full color LED component(composed of red,green and blue LED)  
+```
+gpiozero.RGBLED(red,green,blue)  or  RGBLED(red,green,blue)
+```
+* Parameters:  
+  * red(int) : The GPIO pin that control the red component of RGB LED.  
+  * green(int) : The GPIO pin that controls the green component of the RGB LED.
+  * blue (int) – The GPIO pin that controls the blue component of the RGB LED.  
+
+Here are some Functions related to RGBLED:  
+LET led = RGBLED(pin)  
+* **_on, off, toggle, is_lit, blink_** works same as PWMLED.
+* `led.color`  
+      Represent the color of LED as a tuple of(red,green,blue).
+
+
+### BUZZER
+In this Function you will learn how to use a buzzer (or piezo speaker) with Raspberry Pi. Buzzers can be found in alarm devices, computers, timers and confirmation of user input such as a mouse click or keystroke.
+
+```
+gpiozero.Buzzer(pin)  or  Buzzer(pin)
+```
+Some function related to Buzzer are:  
+**Let bz = Buzzer(pin)**  
+* **`(off, on, toggle, pin)`** works same as in LED or PWMLED.
+* `bz.beep(on_time=1,off_time=1,n=None)`  (values given are default values)   
+        on_time(float) : Number of seconds on.  
+        off_time(float) : Number of seconds off.  
+        n(int)  :  Number of times to blink.  
+
+
+
+
+
+
 
 
