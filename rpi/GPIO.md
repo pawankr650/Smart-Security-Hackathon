@@ -96,7 +96,7 @@ gpiozero.PWMLED(pin)  or PWMLED(pin)
 Here are some functions :  
 **let led = PWMLED(pin)** 
 * **`(on,off,pin,is_lit)`** works same as **LED** function.  
-* **`led.blink**(on_time=1, off_time=1, fade_in_time=0, fade_out_time=0, n=None)`**  (values given are default)  
+* **`led.blink(on_time=1, off_time=1, fade_in_time=0, fade_out_time=0, n=None)`**  (values given are default)  
         `It's parameter:`  
         **on_time, off_time, n**  are same as in LED  
         fade_in_time (float) – Number of seconds to spend fading in. Defaults to 0.  
@@ -113,7 +113,7 @@ Here is a code to understand better:
 ```python
 '''this is a simple code for blinking of led with the help of  gpiozero library'''
 
-from gpiozero import PWMLED   #this imports the LED class from the gpio lirary.
+from gpiozero import PWMLED   #this imports the PWMLED class from the gpio lirary.
 from time import sleep 
 
 led = PWMLED(18)       
