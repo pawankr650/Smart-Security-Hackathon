@@ -50,23 +50,23 @@ This library uses __BCM__ method of numbering as default. So there is no need to
 gpiozero.LED(pin)  or  LED(pin)
 ``` 
 Here are some function for LED:   
-**let led = LED(pin)**   
-* `led.blink(on_time = 1, off_time = 1,n=None)`  (values given are default)   
+let **led = LED(pin)**   
+* **`led.blink(on_time = 1, off_time = 1,n=None)`**  (values given are default)   
         it's parameter are:  
         on_time(float) : number of seconds on   
         off_time(float) : number of seconds off  
-* `led.off()`  
+* **`led.off()`**  
         turn the device off.
-* `led.on()`  
+* **`led.on()`**  
         turm the device on.
-* `led.toogle()`  
+* **`led.toogle()`**  
         Reverse the state of the device. If it’s on, turn it off; if it’s off, turn it on.
-* `led.islit`  
+* **`led.islit`**  
         if active returns **True**  
         otherwise **False**
-* `led.pin`  
+* **`led.pin`**  
          The pin through which device is connected.
-* `led.value`  
+* **`led.value`**  
          if active returns **1**  
          otherwise **0**
 
@@ -96,16 +96,16 @@ gpiozero.PWMLED(pin)  or PWMLED(pin)
 Here are some functions :  
 **let led = PWMLED(pin)** 
 * **`(on,off,pin,is_lit)`** works same as **LED** function.  
-* ` led.blink(on_time=1, off_time=1, fade_in_time=0, fade_out_time=0, n=None)`  (values given are default)  
+* **`led.blink**(on_time=1, off_time=1, fade_in_time=0, fade_out_time=0, n=None)`**  (values given are default)  
         `It's parameter:`  
         **on_time, off_time, n**  are same as in LED  
         fade_in_time (float) – Number of seconds to spend fading in. Defaults to 0.  
         fade_out_time (float) – Number of seconds to spend fading out. Defaults to 0.  
         
-* ` led.value = val `    
+* **` led.value = val `**    
         Through this brightness of the led can be set .  It should be noted the value must lie between '0' & '1' .  
 
-* ` led.pulse(fade_in_time=1, fade_out_time=1, n=None)`   
+* **` led.pulse(fade_in_time=1, fade_out_time=1, n=None)`**   
         This is similar to blinking with brightness fading in and out .
 
 Here is a code to understand better:
@@ -116,13 +116,15 @@ Here is a code to understand better:
 from gpiozero import PWMLED   #this imports the LED class from the gpio lirary.
 from time import sleep 
 
-led = PWMLED(18)       # 'led' is variable name can be anything and this becomes the object.
+led = PWMLED(18)       
 
 while True:
-    led.on()       # this calls the on() function of LED class for object led.
-    sleep(1)
-    led.off()      # this calls the off() function.
+    led.value = 0        # off
     sleep(1) 
+    led.value = 0.5      # half brightness
+    sleep(1)
+    led.value = 1        # full brightness
+    sleep(1)
     
 ```   
 
@@ -135,28 +137,28 @@ gpiozero.Button(pin) or Button(pin)
 ```
 Here are some functions related to Button:  
 **Let button = Button(pin)**
-* `button.when_pressed`  
+* **`button.when_pressed`**  
         It runs the function when the device changes state from inactive to active
-* `button.when_released`  
+* **`button.when_released`**  
         It runs the function when the device changes state from active to inactive
-* `button.when_held`  
+* **`button.when_held`**  
         It runs the function when device remains active.
-* `button.value`  
+* **`button.value`**  
         If button is currently pressed return **1**  
         otherwise **0**
-* `button.is_pressed`  
+* **`button.is_pressed`**  
         If button is currently pressed return **True**  
         otherwise **False**  
         (unlike value it's always a boolean)
-* `button.hold_time`  
+* **`button.hold_time`**  
         The length of time(seconds) to wait after the device is activated
-* `button.hold_repeat`  
+* **`button.hold_repeat`**  
         If True when_held will be executed repeatedly.
-* `button.held_time`  
+* **`button.held_time`**  
         The length of time device has been held for
-* `wait_for_press(timeout=value)` (None is default value)  
+* **`wait_for_press(timeout=value)`** (None is default value)  
         Pause the script until the device is activated, or the timeout is reached.
-* `wait_for_release(timeout=value)` (None is default value)  
+* **`wait_for_release(timeout=value)`** (None is default value)  
         Pause the script until the device is deactivated, or the timeout is reached.
 
 Here is a code to understand better:
