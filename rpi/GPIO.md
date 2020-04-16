@@ -41,8 +41,61 @@ __Note:__ the numbering of the GPIO pins is not in numerical order; GPIO pins 0 
 ### Outputs
 A GPIO pin designated as an output pin can be set to high (3V3) or low (0V).
 
-## Different function in __GPIO ZERO__ LIBRARY:
+## Different function in __GPIO ZERO__ LIBRARY:  
 
+## _INPUT DEVICES_ ##
+
+
+### BUTTON  
+It is a tiny library to make reading buttons very simple.
+```
+gpiozero.Button(pin) or Button(pin)
+```
+Here are some functions related to Button:  
+**Let button = Button(pin)**
+* `button.when_pressed`  
+        It runs the function when the device changes state from inactive to active
+* `button.when_released`  
+        It runs the function when the device changes state from active to inactive
+* `button.when_held`  
+        It runs the function when device remains active.
+* `button.value`  
+        If button is currently pressed return **1**  
+        otherwise **0**
+* `button.is_pressed`  
+        If button is currently pressed return **True**  
+        otherwise **False**  
+        (unlike value it's always a boolean)
+* `button.hold_time`  
+        The length of time(seconds) to wait after the device is activated
+* `button.hold_repeat`  
+        If True when_held will be executed repeatedly.
+* `button.held_time`  
+        The length of time device has been held for
+* `wait_for_press(timeout=value)` (None is default value)  
+        Pause the script until the device is activated, or the timeout is reached.
+* `wait_for_release(timeout=value)` (None is default value)  
+        Pause the script until the device is deactivated, or the timeout is reached.
+
+Here is a code to understand better:
+
+```python
+'''this is a simple code for blinking of led with the help of  gpiozero library'''
+
+from gpiozero import Button   #this imports the Button class from the gpio lirary. 
+
+button = Button(2)      # 'button' is variable name can be anything and this becomes the object.
+
+while True:
+    if button.is_pressed:       # this calls the is_pressed() function 
+         print("button is pressed")
+    else:
+         print("button is not pressed")
+    
+```   
+
+
+## _OUTPUT DEVICES_ ##  
 
 ### LED
 This library uses __BCM__ method of numbering as default. So there is no need to tell which to use. Also any output pin is called **`LED`** .This is because it is defined as LED class . <br />
@@ -50,15 +103,15 @@ This library uses __BCM__ method of numbering as default. So there is no need to
 gpiozero.LED(pin)  or  LED(pin)
 ``` 
 Here are some function for LED:   
-let **led = LED(pin)**   
+**let led = LED(pin)**   
 * **`led.blink(on_time = 1, off_time = 1,n=None)`**  (values given are default)   
-        it's parameter are:  
-        on_time(float) : number of seconds on   
-        off_time(float) : number of seconds off  
-* **`led.off()`**  
+   * it's parameter are:  
+     * on_time(float) : number of seconds on   
+     * off_time(float) : number of seconds off  
+* `led.off()` 
         turn the device off.
 * **`led.on()`**  
-        turm the device on.
+        turn the device on.
 * **`led.toogle()`**  
         Reverse the state of the device. If it’s on, turn it off; if it’s off, turn it on.
 * **`led.islit`**  
@@ -87,7 +140,7 @@ while True:
     sleep(1) 
     
 ``` 
-#### PWMLED
+### PWMLED
 
 As known PWM is technique for getting analog results from digital means . So this class can be used for variable output .  
 ```
@@ -96,11 +149,11 @@ gpiozero.PWMLED(pin)  or PWMLED(pin)
 Here are some functions :  
 **let led = PWMLED(pin)** 
 * **`(on,off,pin,is_lit)`** works same as **LED** function.  
-* **`led.blink(on_time=1, off_time=1, fade_in_time=0, fade_out_time=0, n=None)`**  (values given are default)  
-        `It's parameter:`  
-        **on_time, off_time, n**  are same as in LED  
-        fade_in_time (float) – Number of seconds to spend fading in. Defaults to 0.  
-        fade_out_time (float) – Number of seconds to spend fading out. Defaults to 0.  
+* ` led.blink(on_time=1, off_time=1, fade_in_time=0, fade_out_time=0, n=None)`  (values given are default)  
+  * `It's parameter:`  
+    * **on_time, off_time, n**  are same as in LED  
+    * fade_in_time (float) – Number of seconds to spend fading in. Defaults to 0.  
+    * fade_out_time (float) – Number of seconds to spend fading out. Defaults to 0.  
         
 * **` led.value = val `**    
         Through this brightness of the led can be set .  It should be noted the value must lie between '0' & '1' .  
@@ -126,56 +179,44 @@ while True:
     led.value = 1        # full brightness
     sleep(1)
     
-```   
-
-
-
-### BUTTON  
-It is a tiny library to make reading buttons very simple.
+``` 
+### RGBLED
+It represent full color LED component(composed of red,green and blue LED)  
 ```
-gpiozero.Button(pin) or Button(pin)
+gpiozero.RGBLED(red,green,blue)  or  RGBLED(red,green,blue)
 ```
-Here are some functions related to Button:  
-**Let button = Button(pin)**
-* **`button.when_pressed`**  
-        It runs the function when the device changes state from inactive to active
-* **`button.when_released`**  
-        It runs the function when the device changes state from active to inactive
-* **`button.when_held`**  
-        It runs the function when device remains active.
-* **`button.value`**  
-        If button is currently pressed return **1**  
-        otherwise **0**
-* **`button.is_pressed`**  
-        If button is currently pressed return **True**  
-        otherwise **False**  
-        (unlike value it's always a boolean)
-* **`button.hold_time`**  
-        The length of time(seconds) to wait after the device is activated
-* **`button.hold_repeat`**  
-        If True when_held will be executed repeatedly.
-* **`button.held_time`**  
-        The length of time device has been held for
-* **`wait_for_press(timeout=value)`** (None is default value)  
-        Pause the script until the device is activated, or the timeout is reached.
-* **`wait_for_release(timeout=value)`** (None is default value)  
-        Pause the script until the device is deactivated, or the timeout is reached.
+* Parameters:  
+  * red(int) : The GPIO pin that control the red component of RGB LED.  
+  * green(int) : The GPIO pin that controls the green component of the RGB LED.
+  * blue (int) – The GPIO pin that controls the blue component of the RGB LED.  
 
-Here is a code to understand better:
+Here are some Functions related to RGBLED:  
+LET led = RGBLED(pin)  
+* **_on, off, toggle, is_lit, blink_** works same as PWMLED.
+* `led.color`  
+      Represent the color of LED as a tuple of(red,green,blue).
 
-```python
-'''this is a simple code for blinking of led with the help of  gpiozero library'''
 
-from gpiozero import Button   #this imports the Button class from the gpio lirary. 
+### BUZZER
+In this Function you will learn how to use a buzzer (or piezo speaker) with Raspberry Pi. Buzzers can be found in alarm devices, computers, timers and confirmation of user input such as a mouse click or keystroke.
 
-button = Button(2)      # 'button' is variable name can be anything and this becomes the object.
+```
+gpiozero.Buzzer(pin)  or  Buzzer(pin)
+```
+Some function related to Buzzer are:  
+**Let bz = Buzzer(pin)**  
+* **`(off, on, toggle, pin)`** works same as in LED or PWMLED.
+* `bz.beep(on_time=1,off_time=1,n=None)`  (values given are default values)   
+        on_time(float) : Number of seconds on.  
+        off_time(float) : Number of seconds off.  
+        n(int)  :  Number of times to blink.  
 
-while True:
-    if button.is_pressed:       # this calls the is_pressed() function 
-         print("button is pressed")
-    else:
-         print("button is not pressed")
-    
-```   
+
+
+
+
+
+
+
 
 
