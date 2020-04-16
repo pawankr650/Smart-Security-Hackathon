@@ -104,22 +104,22 @@ gpiozero.LED(pin)  or  LED(pin)
 ``` 
 Here are some function for LED:   
 **let led = LED(pin)**   
-* `led.blink(on_time = 1, off_time = 1,n=None)`  (values given are default)   
+* **`led.blink(on_time = 1, off_time = 1,n=None)`**  (values given are default)   
    * it's parameter are:  
      * on_time(float) : number of seconds on   
      * off_time(float) : number of seconds off  
-* `led.off()`  
+* `led.off()` 
         turn the device off.
-* `led.on()`  
-        turm the device on.
-* `led.toogle()`  
+* **`led.on()`**  
+        turn the device on.
+* **`led.toogle()`**  
         Reverse the state of the device. If it’s on, turn it off; if it’s off, turn it on.
-* `led.islit`  
+* **`led.islit`**  
         if active returns **True**  
         otherwise **False**
-* `led.pin`  
+* **`led.pin`**  
          The pin through which device is connected.
-* `led.value`  
+* **`led.value`**  
          if active returns **1**  
          otherwise **0**
 
@@ -155,10 +155,10 @@ Here are some functions :
     * fade_in_time (float) – Number of seconds to spend fading in. Defaults to 0.  
     * fade_out_time (float) – Number of seconds to spend fading out. Defaults to 0.  
         
-* ` led.value = val `    
+* **` led.value = val `**    
         Through this brightness of the led can be set .  It should be noted the value must lie between '0' & '1' .  
 
-* ` led.pulse(fade_in_time=1, fade_out_time=1, n=None)`   
+* **` led.pulse(fade_in_time=1, fade_out_time=1, n=None)`**   
         This is similar to blinking with brightness fading in and out .
 
 Here is a code to understand better:
@@ -166,16 +166,18 @@ Here is a code to understand better:
 ```python
 '''this is a simple code for blinking of led with the help of  gpiozero library'''
 
-from gpiozero import PWMLED   #this imports the LED class from the gpio lirary.
+from gpiozero import PWMLED   #this imports the PWMLED class from the gpio lirary.
 from time import sleep 
 
-led = PWMLED(18)       # 'led' is variable name can be anything and this becomes the object.
+led = PWMLED(18)       
 
 while True:
-    led.on()       # this calls the on() function of LED class for object led.
-    sleep(1)
-    led.off()      # this calls the off() function.
+    led.value = 0        # off
     sleep(1) 
+    led.value = 0.5      # half brightness
+    sleep(1)
+    led.value = 1        # full brightness
+    sleep(1)
     
 ``` 
 ### RGBLED
@@ -208,6 +210,8 @@ Some function related to Buzzer are:
         on_time(float) : Number of seconds on.  
         off_time(float) : Number of seconds off.  
         n(int)  :  Number of times to blink.  
+
+
 
 
 
