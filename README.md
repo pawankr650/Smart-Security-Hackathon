@@ -4,11 +4,11 @@ This is a friendly documentation that discusses many GPIO libraries .  The RPi h
 
 So there are many libraries whose functions and classes we can use to do our job . Now as told there are many such libraries . Here are some popular ones :  
 
-    * [RPi.GPIO](https://sourceforge.net/p/raspberry-gpio-python/wiki/Home/)  
-    * [pigpio](https://github.com/pawankumarssnl/rpi/blob/master/rpi/PiGPIO.md)  
-    * [GPIOZero](https://github.com/pawankumarssnl/rpi/blob/master/rpi/GPIOZero.md)    
-    * [WiringPi](http://wiringpi.com/)    
-    * [RPIO](https://pythonhosted.org/RPIO/)   
+   * [RPi.GPIO](https://sourceforge.net/p/raspberry-gpio-python/wiki/Home/)  
+   * [pigpio](https://github.com/pawankumarssnl/rpi/blob/master/rpi/PiGPIO.md)  
+   * [GPIOZero](https://github.com/pawankumarssnl/rpi/blob/master/rpi/GPIOZero.md)    
+   * [WiringPi](http://wiringpi.com/)    
+   * [RPIO](https://pythonhosted.org/RPIO/)   
 
 Both RPi.GPIO and GPIOZero are written in python . If you are a beginner either of them can be good option to start . Both are equally capable .But if you have no idea about RPi have never worked with arduino or microcontrollers then GPIOZero would be better option . GPIOZero is basically a simplified library and therefore very friendly to use .  It is particularly designed in a way so that anyone can use it . Also it is new .
     
@@ -17,7 +17,5 @@ If you have some idea then you can use RPi.GPIO as you will feel what's really h
 Now pigpio  is a very versatile library and has many more advanced features which others lack . Also it is implemented in C , Python , Shell and Gambas . Since it has more features hence it is a bit complex . If you are fairly versed and know about RPi and want to do some accurate measures this can be a great option .
 
 ### Authors
-    * [Pranav](https://github.com/pranavkumar14)  
-    * [Pawan](https://github.com/pawankumarssnl)  
-
-[link to Google!](http://google.com)
+   * [Pranav](https://github.com/pranavkumar14)  
+   * [Pawan](https://github.com/pawankumarssnl)  
